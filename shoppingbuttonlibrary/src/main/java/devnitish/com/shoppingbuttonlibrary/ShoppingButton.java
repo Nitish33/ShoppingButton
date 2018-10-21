@@ -103,7 +103,7 @@ public class ShoppingButton extends LinearLayout {
 
         addColor = array.getResourceId(R.styleable.ShoppingButton_addBackground,R.color.white);
         removeColor = array.getResourceId(R.styleable.ShoppingButton_removeBackground,R.color.white);
-        countColor = array.getResourceId(R.styleable.ShoppingButton_countColor,R.color.white);
+        countColor = array.getResourceId(R.styleable.ShoppingButton_countBackground,R.color.white);
         orientation  = array.getInt(R.styleable.ShoppingButton_orientation,0);
 
 //        addTextColor = array.getInt(R.styleable.ShoppingButton_addTextColor,R.color.black);
