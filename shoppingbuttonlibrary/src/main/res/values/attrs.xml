@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ShoppingButton">
+
+        <attr name="showProgressAnimation" format="boolean"/>
+        <attr name="animationTime" format="integer"/>
+        <attr name="max" format="integer"/>
+        <attr name="min" format="integer"/>
+
+        <attr name="buttonWeight" format="float"/>
+        <attr name="countWeight" format="float"/>
+
+        <attr name="buttonWidth" format="dimension"/>
+        <attr name="buttonHeight" format="dimension"/>
+
+        <attr name="countWidth" format="dimension"/>
+        <attr name="countHeight" format="dimension"/>
+
+        <attr name="addColor" format="color"/>
+        <attr name="removeColor" format="color"/>
+        <attr name="countColor" format="color"/>
+        
+        <attr name="addBackground" format="reference"/>
+        <attr name="removeBackground" format="reference"/>
+
+    </declare-styleable>
+
+</resources>
