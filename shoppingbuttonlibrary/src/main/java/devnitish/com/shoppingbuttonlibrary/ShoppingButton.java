@@ -40,9 +40,9 @@ public class ShoppingButton extends LinearLayout {
     int orientation = 0;
     int countTextSize = -1;
 
-    int addTextColor = R.color.black;
-    int removeTextColor = R.color.black;
-    int countTextColor = R.color.white;
+//    int addTextColor = R.color.black;
+//    int removeTextColor = R.color.black;
+//    int countTextColor = R.color.white;
 
     int addColor = R.color.white;
     int removeColor = R.color.white;
@@ -106,9 +106,9 @@ public class ShoppingButton extends LinearLayout {
         countColor = array.getResourceId(R.styleable.ShoppingButton_countColor,R.color.white);
         orientation  = array.getInt(R.styleable.ShoppingButton_orientation,0);
 
-        addTextColor = array.getInt(R.styleable.ShoppingButton_addTextColor,R.color.black);
-        removeTextColor = array.getInt(R.styleable.ShoppingButton_removeTextColor,R.color.white);
-        countTextColor = array.getInt(R.styleable.ShoppingButton_countColor,R.color.black);
+//        addTextColor = array.getInt(R.styleable.ShoppingButton_addTextColor,R.color.black);
+//        removeTextColor = array.getInt(R.styleable.ShoppingButton_removeTextColor,R.color.white);
+//        countTextColor = array.getInt(R.styleable.ShoppingButton_countColor,R.color.black);
 
         array.recycle();
 
@@ -204,9 +204,9 @@ public class ShoppingButton extends LinearLayout {
         mRemove.setBackgroundResource(removeColor);
         mCountButtonHolder.setBackgroundResource(countColor);
 
-        mAdd.setTextColor(getResources().getColor(addTextColor));
-        mRemove.setTextColor(getResources().getColor(removeTextColor));
-        mCount.setTextColor(getResources().getColor(countTextColor));
+//        mAdd.setTextColor(getResources().getColor(addTextColor));
+//        mRemove.setTextColor(getResources().getColor(removeTextColor));
+//        mCount.setTextColor(getResources().getColor(countTextColor));
 
         if(orientation == 0){
             parent.setOrientation(LinearLayout.HORIZONTAL);
