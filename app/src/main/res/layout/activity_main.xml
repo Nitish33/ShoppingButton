@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -12,21 +13,36 @@
         android:layout_height="wrap_content"
         app:buttonWeight="0"
         app:countWeight="0"
+        android:layout_margin="20dp"
         app:buttonWidth="100dp"
+        app:btnTextSize="10dp"
+        android:background="@color/color1"
+        app:animationTime="1000"
+        app:showProgressAnimation="true"
+
         />
 
     <devnitish.com.shoppingbuttonlibrary.ShoppingButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:buttonWeight="1"
+        android:background="@color/color1"
+        android:layout_margin="20dp"
         app:countWeight="10"
+
+        app:showProgressAnimation="true"
+        app:animationTime="100"
         />
 
     <devnitish.com.shoppingbuttonlibrary.ShoppingButton
-        android:layout_width="150dp"
+        android:layout_width="100dp"
+        android:background="@color/color1"
+        android:layout_margin="20dp"
         android:layout_height="wrap_content"
         app:buttonWidth="50dp"
         app:buttonWeight="0"
         app:countWeight="0"
+
+        app:showProgressAnimation="false"
         />
 </LinearLayout>
