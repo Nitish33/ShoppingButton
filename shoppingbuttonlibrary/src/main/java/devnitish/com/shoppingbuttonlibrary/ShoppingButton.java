@@ -20,6 +20,7 @@ public class ShoppingButton extends LinearLayout {
     Button mAdd,mRemove;
     ProgressBar progressBar;
     RelativeLayout mCountButtonHolder;
+    LinearLayout parent;
 
     int count = 0;
     boolean loading;
@@ -36,7 +37,16 @@ public class ShoppingButton extends LinearLayout {
     int countWith = -1;
     int countHeight=  -1;
     int btnTextSize = -1;
+    int orientation = 0;
     int countTextSize = -1;
+
+    int addTextColor = R.color.black;
+    int removeTextColor = R.color.black;
+    int countTextColor = R.color.white;
+
+    int addColor = R.color.white;
+    int removeColor = R.color.white;
+    int countColor = R.color.black;
 
 
 
@@ -46,6 +56,8 @@ public class ShoppingButton extends LinearLayout {
     AddClick addClick;
     RemoveClick removeClick;
 
+
+
     public ShoppingButton(Context context) {
         super(context);
         init();
@@ -54,32 +66,23 @@ public class ShoppingButton extends LinearLayout {
     public ShoppingButton(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
-        TypedArray array = getContext().obtainStyledAttributes(attrs,R.styleable.ShoppingButton);
-
-        loadTime = array.getInteger(R.styleable.ShoppingButton_animationTime,250);
-        max = array.getInteger(R.styleable.ShoppingButton_max,100);
-        min = array.getInteger(R.styleable.ShoppingButton_min,0);
-        progressAnimation = array.getBoolean(R.styleable.ShoppingButton_showProgressAnimation,true);
-        buttonWeight = array.getFloat(R.styleable.ShoppingButton_buttonWeight,1);
-        countWeight = array.getFloat(R.styleable.ShoppingButton_countWeight,2);
-
-
-        buttonWidth = array.getDimensionPixelSize(R.styleable.ShoppingButton_buttonWidth,-1);
-        buttonHeight  = array.getDimensionPixelSize(R.styleable.ShoppingButton_buttonHeight,-1);
-        countWith = array.getDimensionPixelSize(R.styleable.ShoppingButton_countWidth,-1);
-        countHeight = array.getDimensionPixelSize(R.styleable.ShoppingButton_countHeight,-1);
-        btnTextSize = array.getDimensionPixelSize(R.styleable.ShoppingButton_btnTextSize,-1);
-        countTextSize = array.getDimensionPixelSize(R.styleable.ShoppingButton_countTextSize,-1);
-
-        array.recycle();
+        getAttributes(attrs);
 
         init();
     }
 
-    public ShoppingButton(Context context, @Nullable AttributeSet attrs, int defStyleAttr)
+
+    public ShoppingButton(Context context, @Nullable AttributeSet attrs,
+                          int defStyleAttr)
     {
         super(context, attrs, defStyleAttr);
 
+        getAttributes(attrs);
+
+        init();
+    }
+
+    private void getAttributes(AttributeSet attrs) {
 
         TypedArray array = getContext().obtainStyledAttributes(attrs,R.styleable.ShoppingButton);
 
@@ -90,6 +93,7 @@ public class ShoppingButton extends LinearLayout {
         buttonWeight = array.getFloat(R.styleable.ShoppingButton_buttonWeight,1);
         countWeight = array.getFloat(R.styleable.ShoppingButton_countWeight,2);
 
+
         buttonWidth = array.getDimensionPixelSize(R.styleable.ShoppingButton_buttonWidth,-1);
         buttonHeight  = array.getDimensionPixelSize(R.styleable.ShoppingButton_buttonHeight,-1);
         countWith = array.getDimensionPixelSize(R.styleable.ShoppingButton_countWidth,-1);
@@ -97,13 +101,19 @@ public class ShoppingButton extends LinearLayout {
         btnTextSize = array.getDimensionPixelSize(R.styleable.ShoppingButton_btnTextSize,-1);
         countTextSize = array.getDimensionPixelSize(R.styleable.ShoppingButton_countTextSize,-1);
 
+        addColor = array.getResourceId(R.styleable.ShoppingButton_addBackground,R.color.white);
+        removeColor = array.getResourceId(R.styleable.ShoppingButton_removeBackground,R.color.white);
+        countColor = array.getResourceId(R.styleable.ShoppingButton_countColor,R.color.white);
+        orientation  = array.getInt(R.styleable.ShoppingButton_orientation,0);
 
+        addTextColor = array.getInt(R.styleable.ShoppingButton_addTextColor,R.color.black);
+        removeTextColor = array.getInt(R.styleable.ShoppingButton_removeTextColor,R.color.white);
+        countTextColor = array.getInt(R.styleable.ShoppingButton_countColor,R.color.black);
 
         array.recycle();
 
-
-        init();
     }
+
 
 
     private void init(){
@@ -111,6 +121,7 @@ public class ShoppingButton extends LinearLayout {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         inflater.inflate(R.layout.shopping_button,this);
 
+        parent = findViewById(R.id.parent);
         mAdd = findViewById(R.id.add);
         mRemove = findViewById(R.id.remove);
         progressBar = findViewById(R.id.progress);
@@ -119,6 +130,7 @@ public class ShoppingButton extends LinearLayout {
 
 
         setLayoutParam();
+        setColorParam();
 
         handler = new Handler();
 
@@ -183,6 +195,21 @@ public class ShoppingButton extends LinearLayout {
         mCountButtonHolder.setLayoutParams(countParam);
 
 
+
+    }
+
+    private void setColorParam(){
+
+        mAdd.setBackgroundResource(addColor);
+        mRemove.setBackgroundResource(removeColor);
+        mCount.setBackgroundResource(countColor);
+
+        if(orientation == 0){
+            parent.setOrientation(LinearLayout.HORIZONTAL);
+        }
+        else {
+            parent.setOrientation(LinearLayout.VERTICAL);
+        }
 
     }
 
@@ -311,6 +338,13 @@ public class ShoppingButton extends LinearLayout {
         this.progressAnimation = b;
     }
 
+    public void setCount(int count){
 
+        if(count>=min && count<=max){
+            this.count = count;
+            mCount.setText(count+"");
+        }
+
+    }
 
 }

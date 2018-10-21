@@ -17,15 +17,24 @@
         <attr name="countWidth" format="dimension"/>
         <attr name="countHeight" format="dimension"/>
 
-        <attr name="addColor" format="color"/>
-        <attr name="removeColor" format="color"/>
-        <attr name="countColor" format="color"/>
+        <attr name="addColor" format="reference"/>
+        <attr name="removeColor" format="reference"/>
+        <attr name="countColor" format="reference"/>
         
         <attr name="addBackground" format="reference"/>
         <attr name="removeBackground" format="reference"/>
 
         <attr name="btnTextSize" format="dimension"/>
         <attr name="countTextSize" format="dimension"/>
+
+        <attr name="addTextColor" format="reference"/>
+        <attr name="removeTextColor" format="reference"/>
+        <attr name="countTextColor" format="reference"/>
+
+        <attr name="orientation" format="enum">
+            <enum name="horizontal" value="0"/>
+            <enum name="vertical" value="1"/>
+        </attr>
 
     </declare-styleable>
 
