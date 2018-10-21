@@ -35,6 +35,8 @@ public class ShoppingButton extends LinearLayout {
     int buttonHeight = -1;
     int countWith = -1;
     int countHeight=  -1;
+    int btnTextSize = -1;
+    int countTextSize = -1;
 
 
 
@@ -66,6 +68,8 @@ public class ShoppingButton extends LinearLayout {
         buttonHeight  = array.getDimensionPixelSize(R.styleable.ShoppingButton_buttonHeight,-1);
         countWith = array.getDimensionPixelSize(R.styleable.ShoppingButton_countWidth,-1);
         countHeight = array.getDimensionPixelSize(R.styleable.ShoppingButton_countHeight,-1);
+        btnTextSize = array.getDimensionPixelSize(R.styleable.ShoppingButton_btnTextSize,-1);
+        countTextSize = array.getDimensionPixelSize(R.styleable.ShoppingButton_countTextSize,-1);
 
         array.recycle();
 
@@ -90,6 +94,9 @@ public class ShoppingButton extends LinearLayout {
         buttonHeight  = array.getDimensionPixelSize(R.styleable.ShoppingButton_buttonHeight,-1);
         countWith = array.getDimensionPixelSize(R.styleable.ShoppingButton_countWidth,-1);
         countHeight = array.getDimensionPixelSize(R.styleable.ShoppingButton_countHeight,-1);
+        btnTextSize = array.getDimensionPixelSize(R.styleable.ShoppingButton_btnTextSize,-1);
+        countTextSize = array.getDimensionPixelSize(R.styleable.ShoppingButton_countTextSize,-1);
+
 
 
         array.recycle();
@@ -159,6 +166,16 @@ public class ShoppingButton extends LinearLayout {
 
         if(countHeight!=-1){
             countParam.height = countHeight;
+        }
+
+        if(btnTextSize != -1){
+            mAdd.setTextSize(btnTextSize);
+            mRemove.setTextSize(btnTextSize);
+        }
+
+        if(countTextSize!=-1){
+
+            mCount.setTextSize(countTextSize);
         }
 
         mAdd.setLayoutParams(addParam);

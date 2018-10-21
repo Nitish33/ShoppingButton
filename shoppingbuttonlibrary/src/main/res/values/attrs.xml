@@ -24,6 +24,9 @@
         <attr name="addBackground" format="reference"/>
         <attr name="removeBackground" format="reference"/>
 
+        <attr name="btnTextSize" format="dimension"/>
+        <attr name="countTextSize" format="dimension"/>
+
     </declare-styleable>
 
 </resources>

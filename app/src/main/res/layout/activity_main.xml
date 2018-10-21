@@ -12,8 +12,21 @@
         android:layout_height="wrap_content"
         app:buttonWeight="0"
         app:countWeight="0"
-        app:buttonWidth="50dp"
-        app:buttonHeight="50dp"
+        app:buttonWidth="100dp"
+        />
 
+    <devnitish.com.shoppingbuttonlibrary.ShoppingButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:buttonWeight="1"
+        app:countWeight="10"
+        />
+
+    <devnitish.com.shoppingbuttonlibrary.ShoppingButton
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:buttonWidth="50dp"
+        app:buttonWeight="0"
+        app:countWeight="0"
         />
 </LinearLayout>
