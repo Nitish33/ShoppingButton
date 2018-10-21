@@ -23,9 +23,7 @@
         
         <attr name="addBackground" format="reference"/>
         <attr name="removeBackground" format="reference"/>
-
-        <attr name="btnTextSize" format="dimension"/>
-        <attr name="countTextSize" format="dimension"/>
+        <attr name="countBackground" format="reference"/>
 
         <attr name="addTextColor" format="reference"/>
         <attr name="removeTextColor" format="reference"/>

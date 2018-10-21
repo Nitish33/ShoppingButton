@@ -202,7 +202,11 @@ public class ShoppingButton extends LinearLayout {
 
         mAdd.setBackgroundResource(addColor);
         mRemove.setBackgroundResource(removeColor);
-        mCount.setBackgroundResource(countColor);
+        mCountButtonHolder.setBackgroundResource(countColor);
+
+        mAdd.setTextColor(getResources().getColor(addTextColor));
+        mRemove.setTextColor(getResources().getColor(removeTextColor));
+        mCount.setTextColor(getResources().getColor(countTextColor));
 
         if(orientation == 0){
             parent.setOrientation(LinearLayout.HORIZONTAL);
@@ -210,6 +214,8 @@ public class ShoppingButton extends LinearLayout {
         else {
             parent.setOrientation(LinearLayout.VERTICAL);
         }
+
+
 
     }
 
@@ -346,5 +352,7 @@ public class ShoppingButton extends LinearLayout {
         }
 
     }
+
+
 
 }
