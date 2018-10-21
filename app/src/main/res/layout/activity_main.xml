@@ -22,8 +22,7 @@
 
         app:addBackground="@color/color1"
         app:removeBackground="@color/color1"
-
-        app:addTextColor="@color/color1"
+        app:countBackground="@color/color1"
 
         />
 
