@@ -12,43 +12,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:buttonWeight="0"
+        app:min="50"
+        app:count="70"
+        app:max="59"
         app:countWeight="0"
         android:layout_margin="20dp"
-
         app:buttonWidth="100dp"
         app:btnTextSize="10dp"
         app:animationTime="1000"
         app:showProgressAnimation="true"
-
         app:addBackground="@color/color1"
+        app:orientation="vertical"
         app:removeBackground="@color/color1"
         app:countBackground="@color/color1"
 
         />
 
     <devnitish.com.shoppingbuttonlibrary.ShoppingButton
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:buttonWeight="1"
         android:layout_margin="20dp"
         app:countWeight="10"
+        app:min="2"
+        app:orientation="horizontal"
         app:addBackground="@color/color1"
         app:removeBackground="@color/color1"
         app:showProgressAnimation="true"
         app:animationTime="100"
         />
 
-    <devnitish.com.shoppingbuttonlibrary.ShoppingButton
-        android:layout_width="100dp"
-        android:background="@color/color1"
-        android:layout_margin="20dp"
-        android:layout_height="wrap_content"
-        app:buttonWidth="35dp"
-        app:buttonHeight="40dp"
-        app:btnTextSize="7dp"
-        app:buttonWeight="10"
-        app:countWeight="10"
-        app:showProgressAnimation="false"
-        />
 
 </LinearLayout>

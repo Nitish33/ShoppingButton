@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -16,11 +17,17 @@ import android.widget.TextView;
 
 public class ShoppingButton extends LinearLayout {
 
+    public enum Orientation{
+        HORIZONTAL,
+        VERTICAL
+    }
+
     TextView mCount;
     Button mAdd,mRemove;
     ProgressBar progressBar;
     RelativeLayout mCountButtonHolder;
     LinearLayout parent;
+    Orientation currentOrientation;
 
     int count = 0;
     boolean loading;
@@ -105,6 +112,14 @@ public class ShoppingButton extends LinearLayout {
         removeColor = array.getResourceId(R.styleable.ShoppingButton_removeBackground,R.color.white);
         countColor = array.getResourceId(R.styleable.ShoppingButton_countBackground,R.color.white);
         orientation  = array.getInt(R.styleable.ShoppingButton_orientation,0);
+        count = array.getInt(R.styleable.ShoppingButton_count,0);
+
+        if(orientation == 0){
+            currentOrientation = Orientation.HORIZONTAL;
+        }
+        else {
+            currentOrientation = Orientation.VERTICAL;
+        }
 
 //        addTextColor = array.getInt(R.styleable.ShoppingButton_addTextColor,R.color.black);
 //        removeTextColor = array.getInt(R.styleable.ShoppingButton_removeTextColor,R.color.white);
@@ -131,6 +146,7 @@ public class ShoppingButton extends LinearLayout {
 
         setLayoutParam();
         setColorParam();
+        adjustCount();
 
         handler = new Handler();
 
@@ -140,7 +156,7 @@ public class ShoppingButton extends LinearLayout {
             public void run() {
 
                 mCount.setVisibility(VISIBLE);
-                progressBar.setVisibility(GONE);
+                progressBar.setVisibility(INVISIBLE);
 
             }
         };
@@ -194,6 +210,30 @@ public class ShoppingButton extends LinearLayout {
         mRemove.setLayoutParams(removeParam);
         mCountButtonHolder.setLayoutParams(countParam);
 
+        alignViewWithOrientation();
+
+    }
+
+    private void alignViewWithOrientation(){
+
+        LayoutParams addParam = (LayoutParams) mAdd.getLayoutParams();
+        LayoutParams removeParam = (LayoutParams) mRemove.getLayoutParams();
+        LayoutParams countParam = (LayoutParams) mCountButtonHolder.getLayoutParams();
+
+
+        if(currentOrientation == Orientation.HORIZONTAL){
+
+            addParam.width = LayoutParams.WRAP_CONTENT;
+            removeParam.width = LayoutParams.WRAP_CONTENT;
+            countParam.width = LayoutParams.WRAP_CONTENT;
+        }
+
+        else if(currentOrientation == Orientation.VERTICAL){
+
+            addParam.width= LayoutParams.MATCH_PARENT;
+            removeParam.width = LayoutParams.MATCH_PARENT;
+            countParam.width = LayoutParams.MATCH_PARENT;
+        }
 
 
     }
@@ -244,6 +284,8 @@ public class ShoppingButton extends LinearLayout {
                         removeClick.onRemoveClick(count,count,min);
                     }
                 }
+
+                adjustCount();
             }
         });
 
@@ -275,6 +317,8 @@ public class ShoppingButton extends LinearLayout {
                     }
                 }
 
+                adjustCount();
+
             }
         });
 
@@ -300,6 +344,35 @@ public class ShoppingButton extends LinearLayout {
     }
 
 
+    private void adjustCount(){
+
+        if(count>max){
+            count = max;
+        }
+
+        if(count<min){
+            count = min;
+        }
+
+        Log.e("count",""+count);
+
+        mCount.setText(""+count);
+
+        if(count == max){
+            mAdd.setEnabled(false);
+        }
+        else {
+            mAdd.setEnabled(true);
+        }
+
+        if(count == min){
+            mRemove.setEnabled(false);
+        }
+        else {
+            mRemove.setEnabled(true);
+        }
+    }
+
 
     // interfaces.........................................
 
@@ -317,7 +390,10 @@ public class ShoppingButton extends LinearLayout {
 
     // setter and getter...................
     public void setMax(int max){
+
         this.max = max;
+
+        adjustCount();
     }
 
     public int getMax(){
@@ -326,6 +402,9 @@ public class ShoppingButton extends LinearLayout {
 
     public void setMin(int min){
         this.min = min;
+
+        adjustCount();
+
     }
 
     public int getMin(){
@@ -346,13 +425,88 @@ public class ShoppingButton extends LinearLayout {
 
     public void setCount(int count){
 
-        if(count>=min && count<=max){
-            this.count = count;
-            mCount.setText(count+"");
-        }
-
+       this.count = count;
+       adjustCount();
     }
 
+    public int getCount(){
+        return count;
+    }
 
+    public void setButtonWeight(int weight){
+
+        LinearLayout.LayoutParams l1 = (LayoutParams) mAdd.getLayoutParams();
+        LinearLayout.LayoutParams l2 = (LayoutParams) mRemove.getLayoutParams();
+
+        l1.weight=weight;
+        l2.weight = weight;
+
+        mAdd.setLayoutParams(l1);
+        mRemove.setLayoutParams(l2);
+    }
+
+    public void setCountWeight(int weight){
+
+        LinearLayout.LayoutParams l1 = (LayoutParams) mCountButtonHolder.getLayoutParams();
+        l1.weight = weight;
+        mCountButtonHolder.setLayoutParams(l1);
+    }
+
+    public void setButtonWidth(int width){
+        LinearLayout.LayoutParams l1 = (LayoutParams) mAdd.getLayoutParams();
+        LinearLayout.LayoutParams l2 = (LayoutParams) mRemove.getLayoutParams();
+
+        l1.width = width;
+        l2.width = width;
+
+        mAdd.setLayoutParams(l1);
+        mRemove.setLayoutParams(l2);
+    }
+
+    public void setButtonHeight( int height){
+        LinearLayout.LayoutParams l1 = (LayoutParams) mAdd.getLayoutParams();
+        LinearLayout.LayoutParams l2 = (LayoutParams) mRemove.getLayoutParams();
+
+        l1.height = height;
+        l2.height = height;
+
+        mAdd.setLayoutParams(l1);
+        mRemove.setLayoutParams(l2);
+    }
+
+    public void setCountWidth(int width){
+        LinearLayout.LayoutParams l = (LayoutParams) mCountButtonHolder.getLayoutParams();
+        l.width = width;
+        mCountButtonHolder.setLayoutParams(l);
+    }
+
+    public void setCountHeight(int height){
+
+        LinearLayout.LayoutParams l = (LayoutParams) mCountButtonHolder.getLayoutParams();
+        l.height = height;
+
+        mCountButtonHolder.setLayoutParams(l);
+    }
+
+    public void setAddBackground(int resourceId){
+        mAdd.setBackgroundResource(resourceId);
+    }
+
+    public void setRemoveBackground(int resourceId){
+        mRemove.setBackgroundResource(resourceId);
+    }
+
+    public void setCountBackground(int resourceId){
+        mCountButtonHolder.setBackgroundResource(resourceId);
+    }
+
+    public void setButtonTextSize(int size){
+        mAdd.setTextSize(size);
+        mRemove.setTextSize(size);
+    }
+
+    public void setCountTextSize(int size){
+        mCount.setTextSize(size);
+    }
 
 }

@@ -26,19 +26,21 @@
         android:layout_weight="2"
         android:gravity="center"
         >
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:id="@+id/count"
             android:text="0"
+            android:layout_centerInParent="true"
             android:textSize="30dp"
             />
 
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:visibility="invisible"
             android:layout_centerInParent="true"
             android:id="@+id/progress"
             />

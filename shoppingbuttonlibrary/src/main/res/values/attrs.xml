@@ -33,6 +33,8 @@
             <enum name="vertical" value="1"/>
         </attr>
 
+        <attr name="count" format="integer"/>
+
     </declare-styleable>
 
 </resources>
