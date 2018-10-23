@@ -25,21 +25,15 @@
         app:orientation="vertical"
         app:removeBackground="@color/color1"
         app:countBackground="@color/color1"
-
         />
 
     <devnitish.com.shoppingbuttonlibrary.ShoppingButton
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:buttonWeight="1"
-        android:layout_margin="20dp"
-        app:countWeight="10"
-        app:min="2"
-        app:orientation="horizontal"
+        app:buttonWidth="50dp"
+        app:buttonWeight="0"
         app:addBackground="@color/color1"
-        app:removeBackground="@color/color1"
-        app:showProgressAnimation="true"
-        app:animationTime="100"
+
         />
 
 

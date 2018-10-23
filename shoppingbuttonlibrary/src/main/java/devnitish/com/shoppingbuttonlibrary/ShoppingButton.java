@@ -386,6 +386,15 @@ public class ShoppingButton extends LinearLayout {
         public void onRemoveClick(int oldCount, int newCount, int min);
     }
 
+    public void setAddClickListener(AddClick click){
+
+        this.addClick = click;
+    }
+
+    public void setRemoveClickListener(RemoveClick click){
+        this.removeClick = click;
+    }
+
 
 
     // setter and getter...................
